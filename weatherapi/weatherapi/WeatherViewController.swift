@@ -21,7 +21,8 @@ class WeatherViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
 
-    @IBAction func searchButton(_ sender: UIButton) {
+    @IBAction func searchButton(_ sender: UIButton) { //user will type the city and press the search button
+        searchEngine.text
     }
     
 }
