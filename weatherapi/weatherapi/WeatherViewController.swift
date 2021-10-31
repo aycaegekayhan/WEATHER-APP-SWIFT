@@ -14,11 +14,15 @@ class WeatherViewController: UIViewController {
     @IBOutlet weak var labelOfTemperature: UILabel!
     @IBOutlet weak var LabelOfCity: UILabel!
     
+    @IBOutlet weak var searchEngine: UITextField!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
     }
 
-
+    @IBAction func searchButton(_ sender: UIButton) {
+    }
+    
 }
 
