@@ -124,7 +124,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="background" width="6500" height="4500"/>
+        <image name="background" width="662" height="662"/>
         <image name="location.circle.fill" catalog="system" width="128" height="121"/>
         <image name="magnifyingglass" catalog="system" width="128" height="115"/>
         <image name="sun.min" catalog="system" width="128" height="121"/>

@@ -8,21 +8,25 @@
 
 import UIKit
 
-class WeatherViewController: UIViewController {
+class WeatherViewController: UIViewController, UITextFieldDelegate {
     
     @IBOutlet weak var imageViewOfCondition: UIImageView!
     @IBOutlet weak var labelOfTemperature: UILabel!
     @IBOutlet weak var LabelOfCity: UILabel!
-    
     @IBOutlet weak var searchEngine: UITextField!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        searchEngine.delegate = self // let the text field know how it has been interacted
     }
 
     @IBAction func searchButton(_ sender: UIButton) { //user will type the city and press the search button
-        searchEngine.text
+        print(searchEngine.text!)
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool { // take action when 'return' key pressed.
+        print(searchEngine.text!)
+        return true
     }
     
 }
