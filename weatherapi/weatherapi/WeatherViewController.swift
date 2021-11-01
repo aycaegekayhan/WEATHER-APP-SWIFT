@@ -21,12 +21,17 @@ class WeatherViewController: UIViewController, UITextFieldDelegate {
     }
 
     @IBAction func searchButton(_ sender: UIButton) { //user will type the city and press the search button
+        searchEngine.endEditing(true) // editing is done, keyboard can be dismissed
         print(searchEngine.text!)
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool { // take action when 'return' key pressed.
         print(searchEngine.text!)
         return true
+    }
+    
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        searchEngine.text = ""
     }
     
 }
