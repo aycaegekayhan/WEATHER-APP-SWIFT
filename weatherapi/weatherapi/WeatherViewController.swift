@@ -30,7 +30,20 @@ class WeatherViewController: UIViewController, UITextFieldDelegate {
         return true
     }
     
+    func textFieldDidEndEditing(_ textField: UITextField) -> Bool {
+        if searchEngine.text == "" {
+            textField.placeholder = "Search for a place!"
+            return false
+        } else {
+            return true
+        }
+    }
+    
     func textFieldDidEndEditing(_ textField: UITextField) {
+        // implement search engine to search for a city
+        if let city = searchEngine.text {
+            weatherManager.fetchWeather(cityName: city)
+        }
         searchEngine.text = ""
     }
     
