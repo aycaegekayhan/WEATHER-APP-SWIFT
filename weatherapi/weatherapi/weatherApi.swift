@@ -18,9 +18,8 @@ struct weatherApi {
     }
     
     func acquireRequest(stringUrl: String) {
-        
         if let url = URL(string: stringUrl) { //creating the URL
-            
+        
             
             let urlSession = URLSession(configuration: .default) //creates URL session
             
@@ -35,7 +34,12 @@ struct weatherApi {
         
         if let secureData = data {
             let stringData = String(data: secureData, encoding: .utf8)
+            self.jsonParsing(weatherData: secureData)
         }
+        
+    }
+    
+    func jsonParsing(weatherData: Data) {
         
     }
 }

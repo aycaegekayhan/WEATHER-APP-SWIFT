@@ -14,6 +14,7 @@
 		D9538616272995E100705B5B /* WeatherViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9538610272995E100705B5B /* WeatherViewController.swift */; };
 		D9538617272995E100705B5B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9538611272995E100705B5B /* AppDelegate.swift */; };
 		D9BF3E05273361E700BFF812 /* weatherApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9BF3E04273361E700BFF812 /* weatherApi.swift */; };
+		D9BF3E4627345CBE00BFF812 /* WeatherDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9BF3E4527345CBE00BFF812 /* WeatherDataManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,7 @@
 		D9538611272995E100705B5B /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D9538618272F427F00705B5B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		D9BF3E04273361E700BFF812 /* weatherApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = weatherApi.swift; sourceTree = "<group>"; };
+		D9BF3E4527345CBE00BFF812 /* WeatherDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherDataManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,6 +68,7 @@
 				D953860F272995E100705B5B /* SceneDelegate.swift */,
 				D9538610272995E100705B5B /* WeatherViewController.swift */,
 				D9BF3E04273361E700BFF812 /* weatherApi.swift */,
+				D9BF3E4527345CBE00BFF812 /* WeatherDataManager.swift */,
 			);
 			path = weatherapi;
 			sourceTree = "<group>";
@@ -146,6 +149,7 @@
 				D9BF3E05273361E700BFF812 /* weatherApi.swift in Sources */,
 				D9538615272995E100705B5B /* SceneDelegate.swift in Sources */,
 				D9538616272995E100705B5B /* WeatherViewController.swift in Sources */,
+				D9BF3E4627345CBE00BFF812 /* WeatherDataManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
