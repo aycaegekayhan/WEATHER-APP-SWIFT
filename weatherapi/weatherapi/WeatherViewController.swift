@@ -7,6 +7,9 @@
 //
 
 import UIKit
+import CoreLocation
+
+
 
 class WeatherViewController: UIViewController, UITextFieldDelegate, weatherApiDelegate {
     
@@ -17,11 +20,15 @@ class WeatherViewController: UIViewController, UITextFieldDelegate, weatherApiDe
     @IBOutlet weak var searchEngine: UITextField!
     
     var WeatherApi = weatherApi()
+    var locMng =  CLLocationManager()
     
     override func viewDidLoad() {
         WeatherApi.delegate = self
         
         super.viewDidLoad()
+        
+        locMng.requestLocation()
+        
         searchEngine.delegate = self // let the text field know how it has been interacted
     }
 
@@ -53,7 +60,11 @@ class WeatherViewController: UIViewController, UITextFieldDelegate, weatherApiDe
     }
     
     func isWeatherUpdated(_ WeatherApi: weatherApi,weather: WeatherModel) {
-        print(weather.temperature)
+        DispatchQueue.main.async {
+            self.labelOfTemperature.text = weather.temperatureTurnString
+            self.imageViewOfCondition.image = UIImage(systemName: weather.getWeatherCondition)
+        }
+        
     }
     
     func isErrorOccured(error: Error) {
