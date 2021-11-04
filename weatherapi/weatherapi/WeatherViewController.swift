@@ -11,7 +11,7 @@ import CoreLocation
 
 
 
-class WeatherViewController: UIViewController, UITextFieldDelegate, weatherApiDelegate {
+class WeatherViewController: UIViewController, UITextFieldDelegate, weatherApiDelegate, CLLocationManagerDelegate {
     
     
     @IBOutlet weak var imageViewOfCondition: UIImageView!
@@ -20,14 +20,19 @@ class WeatherViewController: UIViewController, UITextFieldDelegate, weatherApiDe
     @IBOutlet weak var searchEngine: UITextField!
     
     var WeatherApi = weatherApi()
-    var locMng =  CLLocationManager()
+    let locMng =  CLLocationManager()
+    
     
     override func viewDidLoad() {
+        locMng.delegate = self
+        
         WeatherApi.delegate = self
+        
         
         super.viewDidLoad()
         
         locMng.requestLocation()
+        
         
         searchEngine.delegate = self // let the text field know how it has been interacted
     }
@@ -63,11 +68,24 @@ class WeatherViewController: UIViewController, UITextFieldDelegate, weatherApiDe
         DispatchQueue.main.async {
             self.labelOfTemperature.text = weather.temperatureTurnString
             self.imageViewOfCondition.image = UIImage(systemName: weather.getWeatherCondition)
+            self.LabelOfCity.text = weather.cityName
         }
         
     }
     
     func isErrorOccured(error: Error) {
+        print(error)
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        if let location = locations.last{
+            let lat = location.coordinate.latitude
+            let lon = location.coordinate.longitude
+            WeatherApi.getWeather(latitude: lat, longitude: lon)
+        }
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
         print(error)
     }
 }
