@@ -19,8 +19,23 @@ struct weatherApi {
     
     func acquireRequest(stringUrl: String) {
         
-        let url = URL(string: stringUrl) //creating the URL
-        let urlSession = URLSession(configuration: .default) //creates URL session
+        if let url = URL(string: stringUrl) { //creating the URL
+            
+            
+            let urlSession = URLSession(configuration: .default) //creates URL session
+            
+            let taskOfSession = urlSession.dataTask(with: url, completionHandler: handleTask(data:response:error:))
+            
+            taskOfSession.resume() // Initializing the task
+        }
+    
     }
     
+    func handleTask(data: Data?, response: URLResponse?, error:Error?) -> Void {
+        
+        if let secureData = data {
+            let stringData = String(data: secureData, encoding: .utf8)
+        }
+        
+    }
 }
