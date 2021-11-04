@@ -41,5 +41,12 @@ struct weatherApi {
     
     func jsonParsing(weatherData: Data) {
         
+        let jsonDecoder = JSONDecoder()
+        do {
+           let decodedWeatherData = try jsonDecoder.decode(WeatherDataManager.self, from: weatherData)
+        }
+        catch {
+            print(error)
+        }
     }
 }
