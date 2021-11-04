@@ -7,9 +7,15 @@
 
 import Foundation
 
+protocol weatherApiDelegate {
+    func isWeatherUpdated(weather: WeatherModel)
+}
+
 struct weatherApi {
     
     let searchUrl = "https://api.openweathermap.org/data/2.5/weather?appid=0e0e1091f2e9b698ab80fdc239ce2d76&units=metric"
+    
+    var delegate: weatherApiDelegate?
     
     func getWeather(nameOfCity: String) {
         
@@ -34,12 +40,14 @@ struct weatherApi {
         
         if let secureData = data {
             let stringData = String(data: secureData, encoding: .utf8)
-            self.jsonParsing(weatherData: secureData)
+            if let weatherCond = self.jsonParsing(weatherData: secureData) {
+                delegate?.isWeatherUpdated(weather: weatherCond)
+            }
         }
         
     }
     
-    func jsonParsing(weatherData: Data) {
+    func jsonParsing(weatherData: Data) -> WeatherModel? {
         
         let jsonDecoder = JSONDecoder()
         do {
@@ -49,10 +57,12 @@ struct weatherApi {
             let id = decodedWeatherData.weatherarray[0].id
             let name = decodedWeatherData.name
             
-            let weather = WeatherModel(conditionId: id, cityName: name, temperature: temp)
+            let weatherCondition = WeatherModel(conditionId: id, cityName: name, temperature: temp)
+            return weatherCondition
         }
         catch {
             print(error)
+            return nil
         }
     }
     
