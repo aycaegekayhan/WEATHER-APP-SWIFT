@@ -15,6 +15,8 @@ class WeatherViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var LabelOfCity: UILabel!
     @IBOutlet weak var searchEngine: UITextField!
     
+    var WeatherApi = weatherApi()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         searchEngine.delegate = self // let the text field know how it has been interacted
@@ -40,10 +42,10 @@ class WeatherViewController: UIViewController, UITextFieldDelegate {
     }
     
     func textFieldDidEndEditing(_ textField: UITextField) {
-        // implement search engine to search for a city
-        if let city = searchEngine.text {
-            weatherManager.fetchWeather(cityName: city)
-        }
+        let cityName = searchEngine.text
+        
+        WeatherApi.getWeather(nameOfCity: cityName!)
+
         searchEngine.text = ""
     }
     
