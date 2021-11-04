@@ -19,8 +19,8 @@ struct weatherApi {
     
     func acquireRequest(stringUrl: String) {
         
-        let url = URL //creating the URL
-        
+        let url = URL(string: stringUrl) //creating the URL
+        let urlSession = URLSession(configuration: .default) //creates URL session
     }
     
 }
