@@ -10,7 +10,7 @@ import Foundation
 struct WeatherDataManager: Decodable {
     
     let name : String
-    let main : Double
+    let main : Main
     let weatherarray : [Weather]
     
 }
@@ -21,4 +21,5 @@ struct Main : Decodable {
 
 struct Weather: Decodable {
     let description : String
+    let id : Int
 }
