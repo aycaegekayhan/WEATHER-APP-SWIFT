@@ -8,7 +8,8 @@
 import Foundation
 
 protocol weatherApiDelegate {
-    func isWeatherUpdated(weather: WeatherModel)
+    func isWeatherUpdated(_ WeatherApi: weatherApi,weather: WeatherModel)
+    func isErrorOccured(error: Error)
 }
 
 struct weatherApi {
@@ -41,7 +42,7 @@ struct weatherApi {
         if let secureData = data {
             let stringData = String(data: secureData, encoding: .utf8)
             if let weatherCond = self.jsonParsing(weatherData: secureData) {
-                delegate?.isWeatherUpdated(weather: weatherCond)
+                delegate?.isWeatherUpdated(self, weather: weatherCond)
             }
         }
         
@@ -61,7 +62,7 @@ struct weatherApi {
             return weatherCondition
         }
         catch {
-            print(error)
+            delegate?.isErrorOccured(error: error)
             return nil
         }
     }

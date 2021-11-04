@@ -10,6 +10,7 @@ import UIKit
 
 class WeatherViewController: UIViewController, UITextFieldDelegate, weatherApiDelegate {
     
+    
     @IBOutlet weak var imageViewOfCondition: UIImageView!
     @IBOutlet weak var labelOfTemperature: UILabel!
     @IBOutlet weak var LabelOfCity: UILabel!
@@ -51,8 +52,12 @@ class WeatherViewController: UIViewController, UITextFieldDelegate, weatherApiDe
         searchEngine.text = ""
     }
     
-    func isWeatherUpdated(weather: WeatherModel) {
+    func isWeatherUpdated(_ WeatherApi: weatherApi,weather: WeatherModel) {
         print(weather.temperature)
+    }
+    
+    func isErrorOccured(error: Error) {
+        print(error)
     }
 }
 
